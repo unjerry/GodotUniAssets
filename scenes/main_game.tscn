@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnuud3kx0ai56"]
+
+[ext_resource type="Script" path="res://scripts/main_game.gd" id="1_vaxdr"]
+[ext_resource type="PackedScene" uid="uid://vow33xgmv80e" path="res://scenes/start_menue.tscn" id="2_k8i35"]
+[ext_resource type="PackedScene" uid="uid://cg8t8m7v31epp" path="res://scenes/main_farm.tscn" id="3_edyti"]
+[ext_resource type="PackedScene" uid="uid://ygokh1gex73o" path="res://scenes/player.tscn" id="4_wqbjc"]
+[ext_resource type="PackedScene" uid="uid://bnvhrxtodm7fs" path="res://scenes/inventory.tscn" id="5_nqcpx"]
+[ext_resource type="PackedScene" uid="uid://c0n88sydhkq35" path="res://scenes/red_house.tscn" id="6_5bn3y"]
+
+[node name="MainGame" type="Node"]
+script = ExtResource("1_vaxdr")
+
+[node name="StartMenue" parent="." instance=ExtResource("2_k8i35")]
+
+[node name="MainFarm" parent="." instance=ExtResource("3_edyti")]
+layer_2/tile_data = PackedInt32Array()
+
+[node name="Inventory" parent="." instance=ExtResource("5_nqcpx")]
+
+[node name="RedHouse" parent="." instance=ExtResource("6_5bn3y")]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(156, 43)
+
+[node name="Player" parent="." instance=ExtResource("4_wqbjc")]
+z_as_relative = false
+y_sort_enabled = true
+
+[connection signal="new_but" from="StartMenue" to="." method="start_game"]
